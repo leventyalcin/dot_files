@@ -1,0 +1,151 @@
+## PHP syntax highlighting
+##
+syntax "php" "\.php$" "\.php[2345s]$" "\.phtml$"
+#functions
+color brightmagenta "([A-Za-z0-9])"
+#numbers
+color brightblue "[0-9]"
+#special
+color brightwhite "(^|[^A-Za-z0-9])(<\?php|\?>|var|and|or|default|class|extends|true|false|global|function|new|switch|case|break|next|prev|elseif|if|else|foreach|for|as|do|while|exit|die|declare|require_once|require|include_once|include|return|echo|static|array|isset)([^A-Za-z0-9])"
+#types
+color brightred "([^A-Za-z0-9])|[^A-Za-z](null|int|string|float|bool|object|resource)[^A-Za-z0-9_]+[^A-Za-z]"
+#strings
+color brightyellow ""(\\.|[^\"])*""
+color brightyellow "'(\\.|[^\'])*'"
+#Variables
+color brightcyan "\$[]\[A-Za-z0-9_'\"]*"
+#comments
+color green "//.*"
+color green "#.*"
+color green start="/\*" end="\*/"
+
+syntax "perl" "\.p[lm]$"
+color red "\<(accept|alarm|atan2|bin(d|mode)|c(aller|h(dir|mod|op|own|root)|lose(dir)?|onnect|os|rypt)|d(bm(close|open)|efined|elete|ie|o|ump)|e(ach|of|val|x(ec|ists|it|p))|f(cntl|ileno|lock|ork)|get(c|login|peername|pgrp|ppid|priority|pwnam|(host|net|proto|serv)byname|pwuid|grgid|(host|net)byaddr|protobynumber|servbyport)|([gs]et|end)(pw|gr|host|net|proto|serv)ent|getsock(name|opt)|gmtime|goto|grep|hex|index|int|ioctl|join|keys|kill|last|length|link|listen|local(time)?|log|lstat|m|mkdir|msg(ctl|get|snd|rcv)|next|oct|open(dir)?|ord|pack|pipe|pop|printf?|push|q|qq|qx|rand|re(ad(dir|link)?|cv|do|name|quire|set|turn|verse|winddir)|rindex|rmdir|s|scalar|seek|seekdir|se(lect|mctl|mget|mop|nd|tpgrp|tpriority|tsockopt)|shift|shm(ctl|get|read|write)|shutdown|sin|sleep|socket(pair)?|sort|spli(ce|t)|sprintf|sqrt|srand|stat|study|substr|symlink|sys(call|read|tem|write)|tell(dir)?|time|tr|y|truncate|umask|un(def|link|pack|shift)|utime|values|vec|wait(pid)?|wantarray|warn|write)\>"
+color magenta "\<(continue|else|elsif|do|for|foreach|if|unless|until|while|eq|ne|lt|gt|le|ge|cmp|x|my|our|sub|use|package|can|isa)\>"
+color cyan start="[$@%]" end="( |\\W|-)"
+color yellow ""([^"]|(\\"))*"|qq\|.*\|"
+color yellow "'([^']|(\\'))*'"
+color white "[sm]/.*/"
+color white start="(^use| = new)" end=";"
+color green "#.*"
+color yellow start="<< 'STOP'" end="STOP"
+
+
+syntax "patch" "\.(patch|diff)$"
+color brightgreen "^\+.*"
+color green "^\+\+\+.*"
+color brightblue "^ .*"
+color brightred "^-.*"
+color red "^---.*"
+color brightyellow "^@@.*"
+color magenta "^diff.*"
+
+
+syntax "makefile" "^Makefile\.?"
+color red "[:=]"
+color magenta "\<(if|ifeq|else|endif)\>"
+color blue "\$\{.*}"
+color brightblue "\w+:"
+color green "#.*$"
+
+
+syntax "JavaScript" "\.(js)$"
+# Default
+color white "^.+$"
+# Decimal, octal and hexadecimal numbers
+color yellow "\<[-+]?([1-9][0-9]*|0[0-7]*|0x[0-9a-fA-F]+)([uU][lL]?|[lL][uU]?)?\>"
+# Floating point number with at least one digit before decimal point
+color yellow "\<[-+]?([0-9]+\.[0-9]*|[0-9]*\.[0-9]+)([EePp][+-]?[0-9]+)?[fFlL]?"
+color yellow "\<[-+]?([0-9]+[EePp][+-]?[0-9]+)[fFlL]?"
+# Keywords
+color green "\<(break|case|catch|continue|default|delete|do|else|finally)\>"
+color green "\<(for|function|if|in|instanceof|new|null|return|switch)\>"
+color green "\<(switch|this|throw|try|typeof|undefined|var|void|while|with)\>"
+# Type specifiers
+color red "\<(Array|Boolean|Date|Enumerator|Error|Function|Math)\>"
+color red "\<(Number|Object|RegExp|String)\>"
+color red "\<(true|false)\>"
+# String
+color brightyellow "L?\"(\\"|[^"])*\""
+color brightyellow "L?'(\'|[^'])*'"
+# Escapes
+color red "\\[0-7][0-7]?[0-7]?|\\x[0-9a-fA-F]+|\\[bfnrt'"\?\\]"
+# Comments
+color magenta start="/\*" end="\*/"
+color magenta "//.*$"
+
+
+
+syntax "postgreSQL" "\.sql$"
+icolor red "\<(A(LL|NALY(S|Z)E|ND|NY|RRAY|S|SC|SYMMETRIC|UTHORIZATION)|B(ETWEEN|INARY|OTH|Y)|C(ASE|AST|HECK|OLLATE|OLUMN|ONSTRAINT|REATE|ROSS|URRENT_(DATE|ROLE|TIME|TIMESTAMP|USER))|D(EFAULT|EFERRABLE|ESC|ISTINCT|O|ROP)|E(LSE|ND|XCEPT)|F(ALSE|OR(EIGN)?|REEZE|ROM|ULL)|GRANT|GROUP|HAVING|I(LIKE|N(ITIALLY|NER|TERSECT|TO)?|S|SNULL)|JOIN|L(EADING|EFT|IKE|IMIT|OCALTIME(STAMP)?)|N(ATURAL|EW|OT(NULL)?|ULL)|O(FF(SET)?|LD|N|NLY|R|RDER|UTER|VERLAPS)|PLACING|PRIMARY|REFERENCES|RIGHT|S(ELECT|ESSION_USER|IMILAR|OME|YMMETRIC)|T(ABLE|HEN|O|RAILING|RUE)|UNION|UNIQUE|USER|USING|VE(IW|RBOSE)|WHEN|WHERE|)\>"
+color magenta "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+color yellow "'[^']*'"
+color green "--.*$"
+
+# Apache files
+syntax "apacheconf" "httpd\.conf|mime\.types|vhosts\.d\\*"
+color yellow ".+"
+color brightcyan "(AcceptMutex|AcceptPathInfo|AccessFileName|Action|AddAlt|AddAltByEncoding|AddAltByType|AddCharset|AddDefaultCharset|AddDescription|AddEncoding)"
+color brightcyan "(AddHandler|AddIcon|AddIconByEncoding|AddIconByType|AddInputFilter|AddLanguage|AddModuleInfo|AddOutputFilter|AddOutputFilterByType|AddType|Alias|AliasMatch)"
+color brightcyan "(Allow|AllowCONNECT|AllowEncodedSlashes|AllowOverride|Anonymous|Anonymous_Authoritative|Anonymous_LogEmail|Anonymous_MustGiveEmail|Anonymous_NoUserID)"
+color brightcyan "(Anonymous_VerifyEmail|AssignUserID|AuthAuthoritative|AuthDBMAuthoritative|AuthDBMGroupFile|AuthDBMType|AuthDBMUserFile|AuthDigestAlgorithm)"
+color brightcyan "(AuthDigestDomain|AuthDigestFile|AuthDigestGroupFile|AuthDigestNcCheck|AuthDigestNonceFormat|AuthDigestNonceLifetime|AuthDigestQop|AuthDigestShmemSize)"
+color brightcyan "(AuthGroupFile|AuthLDAPAuthoritative|AuthLDAPBindDN|AuthLDAPBindPassword|AuthLDAPCharsetConfig|AuthLDAPCompareDNOnServer|AuthLDAPDereferenceAliases)"
+color brightcyan "(AuthLDAPEnabled|AuthLDAPFrontPageHack|AuthLDAPGroupAttribute|AuthLDAPGroupAttributeIsDN|AuthLDAPRemoteUserIsDN|AuthLDAPUrl|AuthName|AuthType|AuthUserFile)"
+color brightcyan "(BrowserMatch|BrowserMatchNoCase|BS2000Account|BufferedLogs|CacheDefaultExpire|CacheDirLength|CacheDirLevels|CacheDisable|CacheEnable|CacheExpiryCheck)"
+color brightcyan "(CacheFile|CacheForceCompletion|CacheGcClean|CacheGcDaily|CacheGcInterval|CacheGcMemUsage|CacheGcUnused|CacheIgnoreCacheControl|CacheIgnoreHeaders)"
+color brightcyan "(CacheIgnoreNoLastMod|CacheLastModifiedFactor|CacheMaxExpire|CacheMaxFileSize|CacheMinFileSize|CacheNegotiatedDocs|CacheRoot|CacheSize|CacheTimeMargin)"
+color brightcyan "(CGIMapExtension|CharsetDefault|CharsetOptions|CharsetSourceEnc|CheckSpelling|ChildPerUserID|ContentDigest|CookieDomain|CookieExpires|CookieLog|CookieName)"
+color brightcyan "(CookieStyle|CookieTracking|CoreDumpDirectory|CustomLog|Dav|DavDepthInfinity|DavLockDB|DavMinTimeout|DefaultIcon|DefaultLanguage|DefaultType)"
+color brightcyan "(DeflateBufferSize|DeflateCompressionLevel|DeflateFilterNote|DeflateMemLevel|DeflateWindowSize|Deny|Directory|DirectoryIndex|DirectoryMatch|DirectorySlash)"
+color brightcyan "(DocumentRoot|DumpIOInput|DumpIOOutput|EnableExceptionHook|EnableMMAP|EnableSendfile|ErrorDocument|ErrorLog|Example|ExpiresActive|ExpiresByType)"
+color brightcyan "(ExpiresDefault|ExtendedStatus|ExtFilterDefine|ExtFilterOptions|FileETag|Files|FilesMatch|ForceLanguagePriority|ForceType|ForensicLog|Group|Header)"
+color brightcyan "(HeaderName|HostnameLookups|IdentityCheck|IfDefine|IfModule|IfVersion|ImapBase|ImapDefault|ImapMenu|Include|IndexIgnore|IndexOptions|IndexOrderDefault)"
+color brightcyan "(ISAPIAppendLogToErrors|ISAPIAppendLogToQuery|ISAPICacheFile|ISAPIFakeAsync|ISAPILogNotSupported|ISAPIReadAheadBuffer|KeepAlive|KeepAliveTimeout)"
+color brightcyan "(LanguagePriority|LDAPCacheEntries|LDAPCacheTTL|LDAPConnectionTimeout|LDAPOpCacheEntries|LDAPOpCacheTTL|LDAPSharedCacheFile|LDAPSharedCacheSize)"
+color brightcyan "(LDAPTrustedCA|LDAPTrustedCAType|Limit|LimitExcept|LimitInternalRecursion|LimitRequestBody|LimitRequestFields|LimitRequestFieldSize|LimitRequestLine)"
+color brightcyan "(LimitXMLRequestBody|Listen|ListenBackLog|LoadFile|LoadModule|Location|LocationMatch|LockFile|LogFormat|LogLevel|MaxClients|MaxKeepAliveRequests)"
+color brightcyan "(MaxMemFree|MaxRequestsPerChild|MaxRequestsPerThread|MaxSpareServers|MaxSpareThreads|MaxThreads|MaxThreadsPerChild|MCacheMaxObjectCount|MCacheMaxObjectSize)"
+color brightcyan "(MCacheMaxStreamingBuffer|MCacheMinObjectSize|MCacheRemovalAlgorithm|MCacheSize|MetaDir|MetaFiles|MetaSuffix|MimeMagicFile|MinSpareServers|MinSpareThreads)"
+color brightcyan "(MMapFile|ModMimeUsePathInfo|MultiviewsMatch|NameVirtualHost|NoProxy|NumServers|NWSSLTrustedCerts|NWSSLUpgradeable|Options|Order|PassEnv|PidFile)"
+color brightcyan "(ProtocolEcho|Proxy|ProxyBadHeader|ProxyBlock|ProxyDomain|ProxyErrorOverride|ProxyIOBufferSize|ProxyMatch|ProxyMaxForwards|ProxyPass|ProxyPassReverse)"
+color brightcyan "(ProxyPreserveHost|ProxyReceiveBufferSize|ProxyRemote|ProxyRemoteMatch|ProxyRequests|ProxyTimeout|ProxyVia|ReadmeName|Redirect|RedirectMatch)"
+color brightcyan "(RedirectPermanent|RedirectTemp|RemoveCharset|RemoveEncoding|RemoveHandler|RemoveInputFilter|RemoveLanguage|RemoveOutputFilter|RemoveType|RequestHeader)"
+color brightcyan "(Require|RewriteBase|RewriteCond|RewriteEngine|RewriteLock|RewriteLog|RewriteLogLevel|RewriteMap|RewriteOptions|RewriteRule|RLimitCPU|RLimitMEM|RLimitNPROC)"
+color brightcyan "(Satisfy|ScoreBoardFile|Script|ScriptAlias|ScriptAliasMatch|ScriptInterpreterSource|ScriptLog|ScriptLogBuffer|ScriptLogLength|ScriptSock|SecureListen)"
+color brightcyan "(SendBufferSize|ServerAdmin|ServerAlias|ServerLimit|ServerName|ServerPath|ServerRoot|ServerSignature|ServerTokens|SetEnv|SetEnvIf|SetEnvIfNoCase|SetHandler)"
+color brightcyan "(SetInputFilter|SetOutputFilter|SSIEndTag|SSIErrorMsg|SSIStartTag|SSITimeFormat|SSIUndefinedEcho|SSLCACertificateFile|SSLCACertificatePath)"
+color brightcyan "(SSLCARevocationFile|SSLCARevocationPath|SSLCertificateChainFile|SSLCertificateFile|SSLCertificateKeyFile|SSLCipherSuite|SSLEngine|SSLMutex|SSLOptions)"
+color brightcyan "(SSLPassPhraseDialog|SSLProtocol|SSLProxyCACertificateFile|SSLProxyCACertificatePath|SSLProxyCARevocationFile|SSLProxyCARevocationPath|SSLProxyCipherSuite)"
+color brightcyan "(SSLProxyEngine|SSLProxyMachineCertificateFile|SSLProxyMachineCertificatePath|SSLProxyProtocol|SSLProxyVerify|SSLProxyVerifyDepth|SSLRandomSeed|SSLRequire)"
+color brightcyan "(SSLRequireSSL|SSLSessionCache|SSLSessionCacheTimeout|SSLUserName|SSLVerifyClient|SSLVerifyDepth|StartServers|StartThreads|SuexecUserGroup|ThreadLimit)"
+color brightcyan "(ThreadsPerChild|ThreadStackSize|TimeOut|TraceEnable|TransferLog|TypesConfig|UnsetEnv|UseCanonicalName|User|UserDir|VirtualDocumentRoot)"
+color brightcyan "(VirtualDocumentRootIP|VirtualHost|VirtualScriptAlias|VirtualScriptAliasIP|Win32DisableAcceptEx|XBitHack)"
+color yellow "<[^>]+>"
+color brightcyan "</?[A-Za-z]+"
+color brightcyan "(<|</|>)"
+color green "\"(\\.|[^\"])*\""
+color white "#.*"
+
+## Here is an example for xml files.
+##
+
+syntax "ml" ".*\.([jrs]?html?|xml|sgml?)$"
+color white "^.+$"
+color green  start="<" end=">"
+color cyan   "<[^> ]+"
+color cyan   ">"
+color yellow start="<!DOCTYPE" end="[/]?>"
+color yellow start="<!--" end="-->"
+color red    "&[^;]*;"
+
+## Here is an example for css files.
+##
+
+syntax "css" "\.css$"
+color brightred     "."
+color brightyellow  start="\{" end="\}"
+color brightwhite           start=":" end="[;^\{]"
+color brightblue    ":active|:focus|:hover|:link|:visited|:link|:after|:before|$"
+color brightblue    start="\/\*" end="\\*/"
+color green         ";|:|\{|\}"
