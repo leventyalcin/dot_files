@@ -5,6 +5,7 @@ set nocompatible
 " ----------------------------------------------------------------------------
 
 set ruler					" show the cursor position all the time
+"set noshowcmd				" don't display incomplete commands
 set nolazyredraw			" turn off lazy redraw
 set number					" line numbers
 
@@ -23,7 +24,7 @@ set shortmess=filtIoOA		" shorten messages
 set report=0				" tell us about changes
 set nostartofline			" don't jump to the start of line when scrolling
 set showcmd					" display incomplete commands
-set tabstop=4
+set tabstop=2 shiftwidth=2 expandtab 
 set autoindent				" automatic indent new lines
 set smartindent				" be smart about it
 set formatoptions+=n		" support for numbered/bullet lists
@@ -54,11 +55,6 @@ syntax on
 " ---------------------------------------------------------------------------
 
 function! StripWhitespace ()
-    exec ':%s/\+$//gc'
+    exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()
-
-function allrowstoline ()
-	exec ':%s/\n/ /gc'
-endfunction
-map ,s :call allrowstoline ()
