@@ -1,3 +1,31 @@
+#for auto indentation
+set autoindent
+# use spaces instead of tab
+set tabstospaces
+set tabsize 2
+
+set historylog
+
+set mouse
+#Text will scroll line-by-line, instead of the usual chunk-by-chunk
+set smooth
+
+include "/usr/share/nano/asm.nanorc"
+include "/usr/share/nano/c.nanorc"
+include "/usr/share/nano/groff.nanorc"
+include "/usr/share/nano/html.nanorc"
+include "/usr/share/nano/java.nanorc"
+include "/usr/share/nano/man.nanorc"
+include "/usr/share/nano/mutt.nanorc"
+include "/usr/share/nano/nanorc.nanorc"
+include "/usr/share/nano/patch.nanorc"
+include "/usr/share/nano/perl.nanorc"
+include "/usr/share/nano/pov.nanorc"
+include "/usr/share/nano/python.nanorc"
+include "/usr/share/nano/ruby.nanorc"
+include "/usr/share/nano/sh.nanorc"
+include "/usr/share/nano/tex.nanorc"
+
 ## PHP syntax highlighting
 ##
 syntax "php" "\.php$" "\.php[2345s]$" "\.phtml$"

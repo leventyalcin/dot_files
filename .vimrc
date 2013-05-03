@@ -54,6 +54,11 @@ syntax on
 " ---------------------------------------------------------------------------
 
 function! StripWhitespace ()
-    exec ':%s/ \+$//gc'
+    exec ':%s/\+$//gc'
 endfunction
 map ,s :call StripWhitespace ()
+
+function allrowstoline ()
+	exec ':%s/\n/ /gc'
+endfunction
+map ,s :call allrowstoline ()
