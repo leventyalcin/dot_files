@@ -4,9 +4,14 @@
 [ -d "/opt/local/sbin" ] && PATH="$PATH:/opt/local/sbin"
 [ -d  "~/bin" ] && PATH="$PATH:~/bin"
 [ -d "$HOME/.rbenv/shims" ] && export PATH="$HOME/.rbenv/shims:$PATH"
+#for openstack cli tools
+[ -f ~/.*-openrc.sh ] && source ~/.*-openrc.sh
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# against of python errors
+[[ "`uname`" = "Darwin" ]] && export LC_ALL=en_US.UTF-8 && export LANG=en_US.UTF-8
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -28,7 +33,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias less='less -R'
-[[ "`uname`" = "Linux" ]] && alias lp='netstat -pant | grep -i listen' || alias lp='netstat -an | grep -i listen'
+[[ "`uname`" = "Linux" ]] && alias lp='netstat -pntl' || alias lp='netstat -an | grep -i listen'
 function ssh-cp-id() {
   if [ -f "$1" ]; then FILE=$1; else FILE="${HOME}/.ssh/id_*.pub"; fi
   TMPKEY=$(cat $FILE)
