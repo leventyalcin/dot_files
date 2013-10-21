@@ -18,8 +18,8 @@ shopt -s histappend
 
 unset MAILCHECK
 
-HISTSIZE=4096
-HISTFILESIZE=4096
+HISTSIZE=8192
+HISTFILESIZE=8192
 
 # set prompt user@host:dir$ 
 export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]\w\[\e[0;0m\]\$ '
@@ -52,3 +52,12 @@ complete -o "default" -W "add bisect branch checkout clone commit diff fetch gre
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source  /opt/local/etc/bash_completion
 [ -x /usr/local/bin/aws ] && complete -C aws_completer aws
+
+function skype-search() {
+  QUERY="SELECT datetime(timestamp, 'unixepoch') AS date, chatname, body_xml FROM Messages"
+  [ -n "$1" ] && QUERY="${QUERY} WHERE body_xml LIKE '%${1}%'"
+  [ -n "$2" ] && QUERY="${QUERY} AND chatname LIKE '%${2}%'"
+  QUERY="${QUERY} ORDER BY timestamp"
+  echo "${QUERY}" 
+  sqlite3 ~/Library/Application\ Support/Skype/yalcinlevent/main.db "${QUERY}"
+}
