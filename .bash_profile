@@ -6,6 +6,7 @@
 [ -d "$HOME/.rbenv/shims" ] && export PATH="$HOME/.rbenv/shims:$PATH"
 #for openstack cli tools
 [ -f ~/.*-openrc.sh ] && source ~/.*-openrc.sh
+export PATH
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
@@ -47,11 +48,12 @@ function ssh-cp-id() {
 # CentOS (epel) yum --enablerepo=epel install bash-completion.noarch
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 [ -e "$HOME/.ssh/known_hosts" ] && complete -o "default" -o "nospace" -W "$(awk '{print $1}' ~/.ssh/known_hosts | awk -F":" '{print $1}' | sed  -e 's/\[//g' -e 's/\]//g'|awk -F"," '{print $1}')" scp sftp ssh
-complete -o "default" -W "add bisect branch checkout clone commit diff fetch grep init log merge mv pull push rebase reset rm show status tag" git
 
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source  /opt/local/etc/bash_completion
 [ -x /usr/local/bin/aws ] && complete -C aws_completer aws
+[ -d ~/.bash_completion.d ] && source ~/.bash_completion.d/*
+[ -f /opt/local/etc/profile.d/bash_completion.sh ] && . /opt/local/etc/profile.d/bash_completion.sh
 
 function skype-search() {
   QUERY="SELECT datetime(timestamp, 'unixepoch') AS date, chatname, body_xml FROM Messages"
