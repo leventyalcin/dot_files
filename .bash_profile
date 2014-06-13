@@ -67,3 +67,13 @@ function skype-search() {
   echo "${QUERY}" 
   sqlite3 ~/Library/Application\ Support/Skype/yalcinlevent/main.db "${QUERY}"
 }
+
+function biggrep() {
+  local PATTERN="${1}"
+  local FILENAME="${2}"
+  local LEN=${#PATTERN}
+  local LIMIT=${3:-"100"}
+  let LIMIT+=$LEN
+
+  grep "${PATTERN}" "${FILENAME}" | fold -w ${LIMIT} | grep -C 1 --color=auto "${PATTERN}"
+}
