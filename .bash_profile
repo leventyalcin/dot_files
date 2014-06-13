@@ -3,10 +3,12 @@
 [ -d "/opt/local/bin" ] && PATH="$PATH:/opt/local/bin"
 [ -d "/opt/local/sbin" ] && PATH="$PATH:/opt/local/sbin"
 [ -d  "~/bin" ] && PATH="$PATH:~/bin"
+[ -d "$HOME/.rbenv/bin" ] && export PATH="$HOME/.rbenv/bin:$PATH"
 [ -d "$HOME/.rbenv/shims" ] && export PATH="$HOME/.rbenv/shims:$PATH"
 #for openstack cli tools
 [ -f ~/.*-openrc.sh ] && source ~/.*-openrc.sh
 export PATH
+eval "$(rbenv init -)"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
@@ -53,7 +55,9 @@ function ssh-cp-id() {
 [ -f /opt/local/etc/bash_completion ] && source  /opt/local/etc/bash_completion
 [ -x /usr/local/bin/aws ] && complete -C aws_completer aws
 [ -d ~/.bash_completion.d ] && source ~/.bash_completion.d/*
-[ -f /opt/local/etc/profile.d/bash_completion.sh ] && . /opt/local/etc/profile.d/bash_completion.sh
+[ -f /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh
+[ -f /opt/local/share/git-core/contrib/completion/git-completion.bash ] && source /opt/local/share/git-core/contrib/completion/git-completion.bash
+[ -f ~/.rbenv/completions/rbenv.bash ] && source ~/.rbenv/completions/rbenv.bash
 
 function skype-search() {
   QUERY="SELECT datetime(timestamp, 'unixepoch') AS date, chatname, body_xml FROM Messages"
