@@ -79,9 +79,8 @@ function biggrep() {
 }
 
 function randompass() {
-  set -x
   local LENGTH=${1:-12}
   local let RLENGTH=$LENGTH+24
   
-  openssl rand -base64 ${RLENGTH} | tr -d '\n' |sed 's/[^a-zA-Z0-9]//g' | head -c${LENGTH}
+  openssl rand -base64 ${RLENGTH} | tr -d '\n' |sed 's/[^a-zA-Z0-9]//g' | head -c${LENGTH}; echo 
 }
