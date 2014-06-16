@@ -77,3 +77,9 @@ function biggrep() {
 
   grep "${PATTERN}" "${FILENAME}" | fold -w ${LIMIT} | grep -C 1 --color=auto "${PATTERN}"
 }
+
+randompass() {
+	local l=$1
+       	[ "$l" == "" ] && l=16
+      	tr -dc A-Za-z0-9 < /dev/urandom | head -c ${l} | xargs
+}
