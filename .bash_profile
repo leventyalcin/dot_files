@@ -10,6 +10,11 @@
 export PATH
 eval "$(rbenv init -)"
 
+[[ `uname` == "Darwin" ]] && \
+  export CPATH=/opt/local/include && \
+  export LIBRARY_PATH=/opt/local/lib && \
+  export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/local/lib
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
@@ -46,6 +51,9 @@ function ssh-cp-id() {
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config|known_hosts, ignoring wildcards
 # Mac sudo port install bash_completion
+#   Install +bash_completion variant automatically with all ports
+#   Open the file /opt/local/etc/macports/variants.conf in any editor and add a new line
+#     +bash_completion
 # Debian apt-get install bash-completion
 # CentOS (epel) yum --enablerepo=epel install bash-completion.noarch
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
