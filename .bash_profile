@@ -92,3 +92,31 @@ function randompass() {
   
   openssl rand -base64 ${RLENGTH} | tr -d '\n' |sed 's/[^a-zA-Z0-9]//g' | head -c${LENGTH}; echo 
 }
+
+function speedtest() {
+  local PARAMS=${@}
+  curl -o /dev/null -s -w " \
+    TIME \n \
+    ------------------------- \n \
+    namelookup %{time_namelookup} \n \
+    connect %{time_connect} \n \
+    redirect %{time_redirect} \n \
+    appconnect %{time_appconnect} \n \
+    pretransfer %{time_pretransfer} \n \
+    starttransfer %{time_starttransfer} \n \
+    time_total %{time_total} \n \
+    SIZE \n \
+    ------------------------- \n \
+    size_upload %{size_upload} \n \
+    size_download %{size_download} \n \
+    size_request %{size_request} \n \
+    size_header %{size_header} \n \
+    speed_upload %{speed_upload} \n \
+    speed_download %{speed_download} \n \
+    HTTP \n \
+    ------------------------- \n \
+    http_code %{http_code} \n \
+    http_connect %{http_connect} \n \
+    num_redirects %{num_redirects} \n \
+  " "${PARAMS}"
+}
