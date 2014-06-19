@@ -22,13 +22,17 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 [[ "`uname`" = "Darwin" ]] && export LC_ALL=en_US.UTF-8 && export LANG=en_US.UTF-8
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+shopt -s histappend 
+shopt -s cmdhist #  one command per line
 
 unset MAILCHECK
 
-HISTSIZE=8192
-HISTFILESIZE=8192
-
+HISTSIZE=16384
+HISTFILESIZE=16384
+HISTCONTROL=ignoreboth # don’t store specific lines
+HISTIGNORE='ls:bg:fg:history'
+HISTTIMEFORMAT='%F %T ' # record timestamps
+PROMPT_COMMAND='history -a' # store history immediately
 # set prompt user@host:dir$ 
 export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]\w\[\e[0;0m\]\$ '
 
