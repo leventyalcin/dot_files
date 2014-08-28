@@ -1,0 +1,45 @@
+[user]
+	name = Levent YALCIN
+	email = leventyalcin@gmail.com
+
+[core]
+  editor = vim
+	excludesfile = /Users/leoman/.gitignore_global
+  autocrlf = false
+
+[alias]
+  st = status
+  sh = show
+  sb = show-branch
+  rema = rebase origin/master master
+  c = commit -m
+  ci = commit
+  cm = commit
+  cmt = commit -v
+  coma = commit -a -v
+  cma = commit -a -v
+  co = checkout
+  cl = clone
+  dc = diff --cached
+  df = diff
+  d = diff -C
+  ds = diff -C --stat
+  dsp = diff -C --stat -p
+  dt = difftool
+  dw = diff -C --color-words
+  up = pull --rebase
+  lg = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d'
+  lo = log --graph --all --color --pretty='%x09%h %ad %cn%x09%s %Cred%d' --date=short
+  ls = ls-files
+  l = log
+  m = checkout master
+  mt = mergetool
+  ituja = log --patch -S
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

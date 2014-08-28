@@ -1,0 +1,37 @@
+*~
+.DS_Store
+
+Applications/
+Desktop/
+Documents/
+Downloads/
+Dropbox/
+Google\ Drive/
+Library/
+Movies/
+Music/
+Phone\ to\ Mac\ Transfers/
+Pictures/
+Projects/
+Public/
+Sync/
+VirtualBox\ VMs/
+.aws/
+.cache/
+.composer/
+.config/
+.cups/
+.dropbox*
+.fbcmd
+.fontconfig/
+.gem/
+.gnupg/
+.npm/
+.rbenv/
+.Trash
+.ssh/
+.vagrant.d/
+.pow
+.s3cfg
+.bash_history
+.boto
