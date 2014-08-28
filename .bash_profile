@@ -41,11 +41,14 @@ alias l='ls -lA'
 alias lg='ls -lG'
 alias lh='ls -alh'
 alias lm='ls -altr'
+alias sl='ls'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias less='less -R'
 [[ "`uname`" = "Linux" ]] && alias lp='netstat -pntl' || alias lp='netstat -an | grep -i listen'
+alias cip='curl http://curlmyip.com'
+
 function ssh-cp-id() {
   if [ -f "$1" ]; then FILE=$1; else FILE="${HOME}/.ssh/id_*.pub"; fi
   TMPKEY=$(cat $FILE)
