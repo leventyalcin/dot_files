@@ -1,0 +1,9 @@
+# http://goodsquishy.com/2012/08/rackspace-cloud-files-from-the-command-line/
+# to use python-swiftclient with rackspace cloud
+# find tenant id with curl 
+# curl  -d '{"auth":{"passwordCredentials":{"username": "username", "password": "password"}}}' \
+#       -H "Content-type: application/json" \
+#       https://identity.api.rackspacecloud.com/v2.0/token
+# export OS_USERNAME=MossoCloudFS-xxxxx-xxxx-xxxx-xxxx:USERNAME
+# export OS_PASSWORD=PASSWORD
+# export OS_AUTH_URL=https://identity.api.rackspacecloud.com/v2.0/
