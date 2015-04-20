@@ -7,16 +7,17 @@ all:
 	.htoprc	\
 	.nanorc	\
 	.ncftp	\
-	.rackspace-rc	\
 	.screenrc	\
 	.vim	\
 	.vimrc	\
 	.wgetrc	~/
 
-	[ -f ~/.ssh/config ]	||	cp -Rpv .ssh ~/
 	[ -f ~/.aws/config ]	||	cp -Rpv .aws ~/
 	[ -f ~/.boto ]			||	cp -Rpv .boto ~/
+	[ -f ~/.cli53 ]			||	cp -Rpv .cli53 ~/
 	[ -f ~/.glacier.cfg ]	||	cp -Rpv .glacier.cfg ~/
 	[ -f ~/.my.cnf ]		||	cp -Rpv .my.cnf ~/
+	[ -f ~/.rackspace-rc ]	||	cp -Rpv .rackspace-rc ~/
+	[ -f ~/.ssh/config ]	||	cp -Rpv .ssh ~/
 
 .PHONY: all
