@@ -38,6 +38,7 @@ export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]\w\[\e[0;0m\] [$?] \$ '
 
 alias la='ls -A'
 alias l='ls -lA'
+alias ll='ls -lA'
 alias lg='ls -lG'
 alias lh='ls -alh'
 alias lm='ls -altr'
@@ -126,3 +127,18 @@ function speedtest() {
     num_redirects %{num_redirects} \n \
   " "${PARAMS}"
 }
+
+
+function verify_ssl_keypair() {
+    KEY="${1}.key"
+    CRT="${1}.crt"
+    TMPFILE=$( date +%s)
+    (
+        openssl x509 -noout -modulus -in "${CRT}" | openssl md5 > /tmp/$TMPFILE \
+        && openssl rsa -noout -modulus -in "${KEY}" | openssl md5 >> /tmp/$TMPFILE \
+    ) \
+    && uniq /tmp/$TMPFILE
+    rm -f /tmp/$TMPFILE
+}
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
