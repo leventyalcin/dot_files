@@ -34,7 +34,7 @@ HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T ' # record timestamps
 PROMPT_COMMAND='history -a' # store history immediately
 # set prompt user@host:dir$ 
-export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]\w\[\e[0;0m\]\$ '
+export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]\w\[\e[0;0m\] [$?] \$ '
 
 alias la='ls -A'
 alias l='ls -lA'
@@ -63,8 +63,7 @@ function ssh-cp-id() {
 #     +bash_completion
 # Debian apt-get install bash-completion
 # CentOS (epel) yum --enablerepo=epel install bash-completion.noarch
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
-[ -e "$HOME/.ssh/known_hosts" ] && complete -o "default" -o "nospace" -W "$(awk '{print $1}' ~/.ssh/known_hosts | awk -F":" '{print $1}' | sed  -e 's/\[//g' -e 's/\]//g'|awk -F"," '{print $1}')" scp sftp ssh
+[ -e "$HOME/.ssh/known_hosts" ] && complete -o "default" -o "nospace" -W "$(awk '{print $1}' ~/.ssh/known_hosts | awk -F":" '{print $1}' | sed  -e 's/\[//g' -e 's/\]//g'|awk -F"," '{print $1}') $(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source  /opt/local/etc/bash_completion
