@@ -19,5 +19,6 @@ all:
 	[ -f ~/.my.cnf ]		||	cp -Rpv .my.cnf ~/
 	[ -f ~/.rackspace-rc ]	||	cp -Rpv .rackspace-rc ~/
 	[ -f ~/.ssh/config ]	||	cp -Rpv .ssh ~/
+	[ -d ~/.ssh/config.d ]  ||	mkdir ~/.ssh/config.d
 
 .PHONY: all
