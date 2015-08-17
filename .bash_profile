@@ -1,14 +1,9 @@
 [ -f ~/.bashrc ] && source ~/.bashrc
 
-[ -d "/opt/local/bin" ] && PATH="$PATH:/opt/local/bin"
-[ -d "/opt/local/sbin" ] && PATH="$PATH:/opt/local/sbin"
 [ -d  "~/bin" ] && PATH="$PATH:~/bin"
-[ -d "$HOME/.rbenv/bin" ] && export PATH="$HOME/.rbenv/bin:$PATH"
-[ -d "$HOME/.rbenv/shims" ] && export PATH="$HOME/.rbenv/shims:$PATH"
 #for openstack cli tools
 [ -f ~/.*-openrc.sh ] && source ~/.*-openrc.sh
 export PATH
-eval "$(rbenv init -)"
 
 [[ `uname` == "Darwin" ]] && \
   export CPATH=/opt/local/include && \
@@ -140,5 +135,3 @@ function verify_ssl_keypair() {
     && uniq /tmp/$TMPFILE
     rm -f /tmp/$TMPFILE
 }
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
