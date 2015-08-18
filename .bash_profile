@@ -45,7 +45,7 @@ alias less='less -R'
 [[ "`uname`" = "Linux" ]] && alias lp='netstat -pntl' || alias lp='netstat -an | grep -i listen'
 alias cip='curl http://curlmyip.com'
 if [ -d ~/.ssh/config.d ] && [ -n "$(ls ~/.ssh/config.d/*.conf)" ]; then
-    alias ssh='[ ! -f ~/.ssh/config.d/tmp ] || [ -n "$(find ~/.ssh/config.d -name tmp -mmin +10 2>/dev/null)" ] && cat ~/.ssh/config ~/.ssh/config.d/*.conf >> ~/.ssh/config.d/tmp; ssh -F ~/.ssh/config.d/tmp'
+    alias ssh='[ ! -f ~/.ssh/config.d/tmp ] || [ -n "$(find ~/.ssh/config.d -name tmp -mmin +10 2>/dev/null)" ] && rm -f ~/.ssh/config.d/tmp  && cat ~/.ssh/config ~/.ssh/config.d/*.conf >> ~/.ssh/config.d/tmp; ssh -F ~/.ssh/config.d/tmp'
 fi
 
 function ssh-cp-id() {
@@ -62,7 +62,11 @@ function ssh-cp-id() {
 #     +bash_completion
 # Debian apt-get install bash-completion
 # CentOS (epel) yum --enablerepo=epel install bash-completion.noarch
-[ -e "$HOME/.ssh/known_hosts" ] && complete -o "default" -o "nospace" -W "$(awk '{print $1}' ~/.ssh/known_hosts | awk -F":" '{print $1}' | sed  -e 's/\[//g' -e 's/\]//g'|awk -F"," '{print $1}') $(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
+complete -o "default" -o "nospace" -W \
+  "$( [ -e "$HOME/.ssh/known_hosts" ] && awk '{print $1}' ~/.ssh/known_hosts | awk -F":" '{print $1}' | sed  -e 's/\[//g' -e 's/\]//g'|awk -F"," '{print $1}') 
+  $(grep "^Host[[:space:]]" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2) 
+  $( [ -n "$(ls $HOME/.ssh/config.d/*.conf 2>/dev/null)" ] && grep "^Host[[:space:]]" ~/.ssh/config.d/*.conf | grep -v "[?*]" | cut -d " " -f2 )" \
+  scp sftp ssh
 
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source  /opt/local/etc/bash_completion
