@@ -5,10 +5,10 @@
 [ -f ~/.*-openrc.sh ] && source ~/.*-openrc.sh
 export PATH
 
-[[ `uname` == "Darwin" ]] && \
-  export CPATH=/opt/local/include && \
-  export LIBRARY_PATH=/opt/local/lib && \
-  export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/local/lib
+#[[ `uname` == "Darwin" ]] && \
+#  export CPATH=/opt/local/include && \
+#  export LIBRARY_PATH=/opt/local/lib && \
+#  export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/opt/local/lib
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
@@ -43,7 +43,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias less='less -R'
 [[ "`uname`" = "Linux" ]] && alias lp='netstat -pntl' || alias lp='netstat -an | grep -i listen'
-alias cip='curl http://curlmyip.com'
+alias cip='curl http://icanhazip.com'
 if [ -d ~/.ssh/config.d ] && [ -n "$(ls ~/.ssh/config.d/*.conf)" ]; then
     alias ssh='[ ! -f ~/.ssh/config.d/tmp ] || [ -n "$(find ~/.ssh/config.d -name tmp -mmin +10 2>/dev/null)" ] && rm -f ~/.ssh/config.d/tmp  && cat ~/.ssh/config ~/.ssh/config.d/*.conf >> ~/.ssh/config.d/tmp; ssh -F ~/.ssh/config.d/tmp'
 fi
