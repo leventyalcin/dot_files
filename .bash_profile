@@ -29,7 +29,10 @@ HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T ' # record timestamps
 PROMPT_COMMAND='history -a' # store history immediately
 # set prompt user@host:dir$ 
-export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]\w\[\e[0;0m\] [$?] \$ '
+#export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]\w\[\e[0;0m\] [$?] \$ '
+[[ "`uname`" = "Darwin" ]] && PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -Ee "s!([^/])[^/]+/!\1/!g"`'  \
+  || PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
+export PS1='\[\e[0;34m\]\u\[\e[0;0m\]@\h:\[\e[1;32m\]$CurDir\$\[\e[0;0m\] $(git-radar --bash --fetch)[$?] \$ '
 
 alias la='ls -A'
 alias l='ls -lA'
