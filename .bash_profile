@@ -74,6 +74,7 @@ complete -o "default" -o "nospace" -W \
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source  /opt/local/etc/bash_completion
 [ -x /usr/local/bin/aws ] && complete -C aws_completer aws
+[ -x /usr/local/bin/eb ] && complete -C eb_completion.bash eb
 [ -d ~/.bash_completion.d ] && source ~/.bash_completion.d/*
 [ -f /opt/local/etc/profile.d/bash_completion.sh ] && source /opt/local/etc/profile.d/bash_completion.sh
 [ -f /opt/local/share/git-core/contrib/completion/git-completion.bash ] && source /opt/local/share/git-core/contrib/completion/git-completion.bash
