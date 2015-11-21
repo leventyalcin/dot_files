@@ -46,7 +46,7 @@ set visualbell				" shut the fuck up
 let g:snippetsEmu_key = "<Tab>"
 
 " Display extra whitespace
-"set list listchars=tab:»·,trail:·
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 
 syntax on
 
