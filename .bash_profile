@@ -16,6 +16,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # against of python errors
 [[ "`uname`" = "Darwin" ]] && export LC_ALL=en_US.UTF-8 && export LANG=en_US.UTF-8
 
+# disable annoying cowsay outputs
+export ANSIBLE_NOCOWS=1
+
 # append to the history file, don't overwrite it
 shopt -s histappend 
 shopt -s cmdhist #  one command per line
