@@ -28,7 +28,7 @@ unset MAILCHECK
 HISTSIZE=16384
 HISTFILESIZE=16384
 HISTCONTROL=ignoreboth # don’t store specific lines
-HISTIGNORE='ls:bg:fg:history'
+HISTIGNORE='ls:bg:fg:history:export AWS_SECRET_ACCESS_KEY*'
 HISTTIMEFORMAT='%F %T ' # record timestamps
 PROMPT_COMMAND='history -a' # store history immediately
 # set prompt user@host:dir$ 
